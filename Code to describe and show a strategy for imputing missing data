@@ -1,0 +1,21 @@
+//Missing values by variable
+
+md.pattern(activity)
+(missing <- sum(is.na(activity)))
+
+//Missing Values as percent of total, percent each column
+
+missingPercent <- sum(is.na(activity))/(dim(activity)[1]*dim(activity)[2]) * 100 
+pMiss <- function(x) { sum(is.na(x)) / length(x) * 100}
+(missingPercentCol <-apply(activity, 2, pMiss))
+
+//Missing value visulaisation
+
+aggr(activity, numbers = TRUE)
+
+//Missing values strategy: take complete cases only
+
+activityNoMissing <- activity[complete.cases(activity),
+
+
+ 
