@@ -1,0 +1,19 @@
+t <- activityNoMissing %>% mutate(dayOfWeek = weekdays(date)) %>%
+  mutate(Weekend = ifelse(dayOfWeek == "Saturday" | dayOfWeek == "Sunday", "Weekend", "Weekday"))
+  
+  
+  ## By Weekday vs. Weekend 
+t %>% 
+  group_by(Weekend, interval) %>% mutate(meanStepsInterval = mean(steps)) %>%
+  ggplot(aes(x = interval, y = meanStepsInterval)) + geom_line() +
+  facet_wrap(~Weekend) +ggtitle("Mean Steps by Interval: Weekday vs. Weekend") + 
+  xlab("Interval") + ylab("Mean Steps")
+  
+  
+  //day to day
+  
+  t %>%
+  group_by(dayOfWeek, interval) %>% mutate(meanStepsInterval = mean(steps)) %>%
+  ggplot(aes(x = interval, y = meanStepsInterval)) + geom_line() +
+  facet_wrap(~dayOfWeek) +ggtitle("Mean Steps by Interval: By Day") +
+  xlab("Interval") + ylab("Mean Steps")
