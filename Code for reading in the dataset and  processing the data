@@ -1,0 +1,22 @@
+library(readr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(VIM)
+library(mice)
+set.seed(1010)
+
+
+activity <- read_csv("activity.csv")
+
+
+
+Parsed with column specification:
+## cols(
+##   steps = col_integer(),
+##   date = col_date(format = ""),
+##   interval = col_integer()
+## )
+
+
+
